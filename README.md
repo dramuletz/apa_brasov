@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  ![Logo](https://github.com/dramuletz/apa_brasov/blob/main/custom_components/apa_brasov/brands/logo.png)
+  ![Logo](https://github.com/dramuletz/apa_brasov/blob/main/brands/logo.png)
 
   
 Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
