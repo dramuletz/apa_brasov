@@ -1,141 +1,79 @@
-# 💧 APA Brasov — Integrare Home Assistant
+# 💧 APA Brasov — Home Assistant Integration
 
-Integrare custom pentru portalul **https://www.apabrasov.ro** care aduce datele
-contului tău de apă direct în Home Assistant.
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![GitHub release](https://img.shields.io/github/release/USERNAME/apa_brasov.svg)](https://github.com/USERNAME/apa_brasov/releases)
+
+Integrare custom pentru portalul **[myaccount.apabrasov.ro](https://myaccount.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
 
 ---
 
-## Entitati disponibile
+## 📦 Instalare prin HACS (recomandat)
 
-### Senzori (`sensor.*`)
+1. Deschide **HACS** în Home Assistant
+2. Mergi la **Integrări** → butonul **⋮** (trei puncte) → **Custom repositories**
+3. Adaugă URL-ul: `https://github.com/USERNAME/apa_brasov`
+4. Categoria: **Integration**
+5. Click **Add** → caută **APA Brasov** → **Download**
+6. Repornește Home Assistant
+7. Mergi la **Setări → Dispozitive și Servicii → + Adaugă integrare** → caută **APA Brasov**
+8. Introdu email-ul și parola de pe portal
+
+---
+
+## 🔧 Instalare manuală
+
+1. Descarcă ultima versiune de pe [Releases](https://github.com/USERNAME/apa_brasov/releases)
+2. Copiază folderul `custom_components/apa_brasov/` în `config/custom_components/`
+3. Repornește Home Assistant
+4. Adaugă integrarea din UI
+
+---
+
+## 📊 Entități disponibile
+
 | Entitate | Descriere |
 |---|---|
-| `sensor.apa_brasov_index_apometru_curent` | Indexul apometrului (m³) |
-| `sensor.apa_brasov_index_apometru_anterior` | Indexul lunii anterioare |
-| `sensor.apa_brasov_consum_curent` | Consum lunar (m³) |
-| `sensor.apa_brasov_sold_cont` | Sold cont curent (RON) |
-| `sensor.apa_brasov_factura_1_suma` | Ultima factură — sumă + detalii |
-| `sensor.apa_brasov_factura_2_suma` | Penultima factură |
-| `sensor.apa_brasov_factura_3_suma` | Antepenultima factură |
-| `sensor.apa_brasov_numar_contract` | Număr contract + adresă |
+| `sensor.apa_brasov_total_de_plata` | Soldul contului (RON) |
+| `sensor.apa_brasov_index_apometru_curent` | Index apometru curent (m³) |
+| `sensor.apa_brasov_consum_ultima_perioada` | Consum față de citirea anterioară (m³) |
+| `sensor.apa_brasov_ultima_factura` | Valoarea ultimei facturi (RON) + detalii în atribute |
+| `sensor.apa_brasov_arhiva_plati` | Lista completă a plăților în atribute |
+| `sensor.apa_brasov_date_utilizator` | Cod client, nr contract, adresă, cod autocitire |
 | `sensor.apa_brasov_ultima_actualizare` | Timestamp ultima sincronizare |
-
-### Introducere index (`number.*`)
-| Entitate | Descriere |
-|---|---|
-| `number.apa_brasov_autocitire_index_apometru` | Introdu indexul → trimis pe portal |
+| `number.apa_brasov_autocitire_index_apometru` | Câmp pentru transmiterea indexului |
 
 ---
 
-## Instalare
+## 🗺️ Dashboard Lovelace
 
-### Varianta 1 — Manual (fără HACS)
+În folderul `lovelace_dashboard.yaml` găsești un card gata de import cu grafice pentru plăți și evoluție consum.
 
-1. Copiază folderul `custom_components/apa_brasov/` în directorul
-   `config/custom_components/` al instalației tale Home Assistant.
-
-   Structura finală:
-   ```
-   config/
-   └── custom_components/
-       └── apa_brasov/
-           ├── __init__.py
-           ├── api.py
-           ├── config_flow.py
-           ├── const.py
-           ├── manifest.json
-           ├── number.py
-           ├── sensor.py
-           └── translations/
-               └── ro.json
-   ```
-
-2. Repornește Home Assistant.
-
-3. Mergi la **Setări → Dispozitive și Servicii → Adaugă Integrare**.
-
-4. Caută **APA Brasov** și introdu credențialele portalului.
-
-### Dependințe Python
-
-Pachetele sunt declarate în `manifest.json` și se instalează automat:
-- `requests`
-- `beautifulsoup4`
+Graficele folosesc [ApexCharts Card](https://github.com/RomRider/apexcharts-card) (instalabil din HACS → Frontend).
 
 ---
 
-## Dashboard Lovelace
+## ⚙️ Configurare
 
-Importă fișierul `lovelace_dashboard.yaml` în dashboard-ul tău:
+Autentificarea se face cu **email** și **parolă** de pe [myaccount.apabrasov.ro](https://myaccount.apabrasov.ro). Nu sunt necesare alte date.
 
-1. Edit Dashboard → Raw Configuration Editor
-2. Lipeste conținutul fișierului `lovelace_dashboard.yaml`
+Datele se actualizează **la fiecare 6 ore**.
 
----
-
-## Automatizări utile
-
-### Notificare factură neplatită
-```yaml
-automation:
-  - alias: "APA Brasov - Factura neplatita"
-    trigger:
-      - platform: state
-        entity_id: sensor.apa_brasov_factura_1_suma
-    condition:
-      - condition: template
-        value_template: >
-          {{ state_attr('sensor.apa_brasov_factura_1_suma', 'status') | lower 
-             in ['neplatit', 'restant', 'unpaid'] }}
-    action:
-      - service: notify.mobile_app
-        data:
-          title: "💧 APA Brasov — Factură neachitată"
-          message: >
-            Factura {{ state_attr('sensor.apa_brasov_factura_1_suma', 'numar') }}
-            în valoare de {{ states('sensor.apa_brasov_factura_1_suma') }} RON
-            este neachitată. Scadență: 
-            {{ state_attr('sensor.apa_brasov_factura_1_suma', 'data_scadenta') }}
-```
-
-### Reminder lunar autocitire (în a 25-a zi a lunii)
-```yaml
-automation:
-  - alias: "APA Brasov - Reminder autocitire"
-    trigger:
-      - platform: time
-        at: "09:00:00"
-    condition:
-      - condition: template
-        value_template: "{{ now().day == 25 }}"
-    action:
-      - service: notify.mobile_app
-        data:
-          title: "💧 Autocitire apometru"
-          message: >
-            Nu uita să transmiți indexul apometrului!
-            Index actual: {{ states('sensor.apa_brasov_index_apometru_curent') }} m³
-```
+> **Autocitirea indexului** este acceptată de portal doar în intervalul **15–21 ale lunii**.
 
 ---
 
-## Note tehnice
-
-- Datele se actualizează **la fiecare 6 ore** (configurabil în `const.py` → `SCAN_INTERVAL`).
-- Integrarea funcționează prin **scraping HTML** al portalului — dacă APA Brasov
-  modifică structura site-ului, este posibil să necesite actualizare.
-- Credențialele sunt stocate **local** în `config/.storage/` — nu sunt transmise
-  nicăieri în afară de portalul oficial.
-
----
-
-## Depanare
+## 🐛 Depanare
 
 Activează logging detaliat în `configuration.yaml`:
 
 ```yaml
 logger:
-  default: warning
   logs:
     custom_components.apa_brasov: debug
 ```
+
+---
+
+## 📄 Licență
+
+MIT License — vezi [LICENSE](LICENSE)

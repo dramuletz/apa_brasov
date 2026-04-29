@@ -1,0 +1,7 @@
+{
+  "name": "APA Brasov",
+  "description": "Integrare Home Assistant pentru portalul myaccount.apabrasov.ro — facturi, index apometru, autocitire, plăți.",
+  "render_readme": true,
+  "homeassistant": "2023.1.0",
+  "content_in_root": false
+}
