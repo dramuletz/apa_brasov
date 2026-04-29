@@ -1,6 +1,6 @@
 # 💧 APA Brasov — Integrare Home Assistant
 
-Integrare custom pentru portalul **myaccount.apabrasov.ro** care aduce datele
+Integrare custom pentru portalul **https://www.apabrasov.ro** care aduce datele
 contului tău de apă direct în Home Assistant.
 
 ---
