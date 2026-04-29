@@ -1,7 +1,7 @@
 {
   "domain": "apa_brasov",
   "name": "APA Brasov",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "documentation": "https://github.com/USERNAME/apa_brasov",
   "issue_tracker": "https://github.com/USERNAME/apa_brasov/issues",
   "requirements": [
