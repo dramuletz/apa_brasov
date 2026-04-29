@@ -1,0 +1,24 @@
+{
+  "title": "APA Brasov",
+  "config": {
+    "step": {
+      "user": {
+        "title": "Conectare la myaccount.apabrasov.ro",
+        "description": "Introduceți credențialele de pe portalul {portal_url}",
+        "data": {
+          "username": "Email / Username",
+          "password": "Parolă",
+          "cod_client": "Cod Client (opțional)"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Autentificare eșuată. Verificați email-ul și parola.",
+      "cannot_connect": "Nu s-a putut conecta la portalul APA Brasov. Verificați conexiunea la internet.",
+      "unknown": "Eroare necunoscută. Verificați log-urile Home Assistant."
+    },
+    "abort": {
+      "already_configured": "APA Brasov este deja configurat."
+    }
+  }
+}

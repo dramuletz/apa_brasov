@@ -1,0 +1,97 @@
+# Dashboard APA Brasov pentru Home Assistant
+# Adauga in dashboard: Edit > Raw configuration editor
+
+type: vertical-stack
+cards:
+
+  - type: markdown
+    content: >
+      ## 💧 APA Brasov
+      Ultima actualizare: {{ states('sensor.apa_brasov_ultima_actualizare') | as_datetime | as_local | datetime_format('%d.%m.%Y %H:%M') }}
+
+  # ── Index & Consum ─────────────────────────────────────────
+  - type: entities
+    title: Apometru
+    entities:
+      - entity: sensor.apa_brasov_index_apometru_curent
+        name: Index Curent
+      - entity: sensor.apa_brasov_consum_ultima_perioada
+        name: Consum Ultima Perioadă
+      - entity: sensor.apa_brasov_consum_luna_curenta
+        name: Consum Luna Curentă
+      - entity: sensor.apa_brasov_consum_an_curent
+        name: Consum An Curent
+
+  # ── Autocitire ─────────────────────────────────────────────
+  - type: entities
+    title: ✍️ Transmite Index
+    entities:
+      - entity: number.apa_brasov_autocitire_index_apometru
+        name: Index de transmis
+
+  # ── Ultima factura & sold ──────────────────────────────────
+  - type: entities
+    title: Facturare
+    entities:
+      - entity: sensor.apa_brasov_ultima_factura
+        name: Ultima Factură (RON)
+        secondary_info: last-changed
+      - entity: sensor.apa_brasov_total_de_plata
+        name: Total de Plată
+
+  # ── Grafic consum lunar (ultimele 12 luni) ─────────────────
+  - type: custom:apexcharts-card
+    header:
+      show: true
+      title: 📊 Evoluție Consum Lunar (m³)
+    series:
+      - entity: sensor.apa_brasov_arhiva_consum
+        name: Consum m³
+        data_generator: |
+          const istoric = entity.attributes.istoric || {};
+          const result = [];
+          const sortedYears = Object.keys(istoric).sort();
+          for (const an of sortedYears) {
+            const luni = istoric[an];
+            for (const luna of Object.keys(luni).sort()) {
+              const date = new Date(`${an}-${luna}-15`);
+              result.push([date.getTime(), luni[luna]]);
+            }
+          }
+          return result.slice(-24);
+    graph_span: 24month
+    chart_type: bar
+
+  # ── Grafic plati ───────────────────────────────────────────
+  - type: custom:apexcharts-card
+    header:
+      show: true
+      title: 💳 Istoricul Plăților (RON)
+    series:
+      - entity: sensor.apa_brasov_arhiva_plati
+        name: Suma plătită (RON)
+        data_generator: |
+          const plati = entity.attributes.plati || [];
+          return plati
+            .filter(p => p.data && p.suma)
+            .map(p => {
+              const parts = p.data.split('.');
+              const date = new Date(`${parts[2]}-${parts[1]}-${parts[0]}`);
+              return [date.getTime(), p.suma];
+            })
+            .reverse();
+    chart_type: bar
+
+  # ── Date utilizator ────────────────────────────────────────
+  - type: entities
+    title: 👤 Date Utilizator
+    entities:
+      - entity: sensor.apa_brasov_date_utilizator
+        name: Cod Client
+        secondary_info: last-changed
+    footer:
+      type: markdown
+      content: >
+        **Contract:** {{ state_attr('sensor.apa_brasov_date_utilizator', 'nr_contract') }}
+        | **Cod autocitire:** {{ state_attr('sensor.apa_brasov_date_utilizator', 'cod_autocitire') }}
+        | **Adresă:** {{ state_attr('sensor.apa_brasov_date_utilizator', 'adresa') }}
