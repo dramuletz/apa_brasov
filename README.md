@@ -11,7 +11,7 @@ Integrare custom pentru portalul **[myaccount.apabrasov.ro](https://myaccount.ap
 
 1. Deschide **HACS** în Home Assistant
 2. Mergi la **Integrări** → butonul **⋮** (trei puncte) → **Custom repositories**
-3. Adaugă URL-ul: `https://github.com/USERNAME/apa_brasov`
+3. Adaugă URL-ul: `https://github.com/dramuletz/apa_brasov`
 4. Categoria: **Integration**
 5. Click **Add** → caută **APA Brasov** → **Download**
 6. Repornește Home Assistant
