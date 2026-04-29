@@ -9,7 +9,9 @@
     "beautifulsoup4>=4.11.0"
   ],
   "dependencies": [],
-  "codeowners": [],
+  "codeowners": [
+    "@dramuletz"
+  ],
   "config_flow": true,
   "iot_class": "cloud_polling",
   "quality_scale": "custom",

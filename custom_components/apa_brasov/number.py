@@ -44,8 +44,8 @@ class ApaBrasovIndexInput(CoordinatorEntity, NumberEntity):
         self._attr_device_info = DeviceInfo(
             identifiers={(DOMAIN, entry.entry_id)},
             name="APA Brasov",
-            manufacturer="Compania Apa Brasov",
-            model="Portal Client",
+            manufacturer="Stefan Dram (dramuletz)",
+            model="Compania Apa Brasov Integration",
             configuration_url="https://myaccount.apabrasov.ro",
         )
         # Valoarea curenta - folosim indexul din date
