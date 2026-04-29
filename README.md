@@ -1,9 +1,15 @@
 # 💧 APA Brasov — Home Assistant Integration
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![GitHub release](https://img.shields.io/github/release/dramueltz/apa_brasov.svg)](https://github.com/dramuletz/apa_brasov/releases)
+<div align="center">
 
+  ![Logo](https://github.com/dramuletz/apa_brasov/blob/main/custom_components/info_meteo_romania/brand/logo.png)
+  
 Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
+  
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
+[![GitHub release](https://img.shields.io/github/release/dramuletz/apa_brasov.svg)](https://github.com/dramuletz/apa_brasov/releases)
+
+</div>
 
 ---
 
