@@ -3,7 +3,7 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/release/USERNAME/apa_brasov.svg)](https://github.com/USERNAME/apa_brasov/releases)
 
-Integrare custom pentru portalul **[myaccount.apabrasov.ro](https://myaccount.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
+Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
 
 ---
 
@@ -11,7 +11,7 @@ Integrare custom pentru portalul **[myaccount.apabrasov.ro](https://myaccount.ap
 
 1. Deschide **HACS** în Home Assistant
 2. Mergi la **Integrări** → butonul **⋮** (trei puncte) → **Custom repositories**
-3. Adaugă URL-ul: `https://github.com/USERNAME/apa_brasov`
+3. Adaugă URL-ul: `https://github.com/dramuletz/apa_brasov`
 4. Categoria: **Integration**
 5. Click **Add** → caută **APA Brasov** → **Download**
 6. Repornește Home Assistant
