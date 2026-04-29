@@ -1,7 +1,7 @@
 # 💧 APA Brasov — Home Assistant Integration
 
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
-[![GitHub release](https://img.shields.io/github/release/USERNAME/apa_brasov.svg)](https://github.com/USERNAME/apa_brasov/releases)
+[![GitHub release](https://img.shields.io/github/release/dramueltz/apa_brasov.svg)](https://github.com/USERNAME/apa_brasov/releases)
 
 Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
 
@@ -22,7 +22,7 @@ Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)*
 
 ## 🔧 Instalare manuală
 
-1. Descarcă ultima versiune de pe [Releases](https://github.com/USERNAME/apa_brasov/releases)
+1. Descarcă ultima versiune de pe [Releases](https://github.com/dramuletz/apa_brasov/releases)
 2. Copiază folderul `custom_components/apa_brasov/` în `config/custom_components/`
 3. Repornește Home Assistant
 4. Adaugă integrarea din UI
