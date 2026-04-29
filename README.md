@@ -5,7 +5,7 @@
   ![Logo](https://github.com/dramuletz/apa_brasov/blob/main/brands/logo.png)
 
   
-Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
+Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de la furnizorul de apă direct în Home Assistant.
   
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/release/dramuletz/apa_brasov.svg)](https://github.com/dramuletz/apa_brasov/releases)
