@@ -3,7 +3,7 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/hacs/integration)
 [![GitHub release](https://img.shields.io/github/release/USERNAME/apa_brasov.svg)](https://github.com/USERNAME/apa_brasov/releases)
 
-Integrare custom pentru portalul **[myaccount.apabrasov.ro](https://myaccount.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
+Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de apă direct în Home Assistant.
 
 ---
 
