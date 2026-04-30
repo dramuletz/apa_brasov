@@ -58,6 +58,8 @@ Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)*
 
 În folderul `lovelace_dashboard.yaml` găsești un card gata de import cu grafice pentru plăți și evoluție consum.
 
+📖 **[Documentație completă Lovelace →](LOVELACE.md)**
+
 Graficele folosesc [ApexCharts Card](https://github.com/RomRider/apexcharts-card) (instalabil din HACS → Frontend).
 
 ---
