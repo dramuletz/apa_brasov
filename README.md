@@ -84,6 +84,12 @@ logger:
 
 ---
 
+## 👤 Autor
+
+**Stefan Dram** — [@dramuletz](https://github.com/dramuletz)
+
+---
+
 ## 📄 Licență
 
-MIT License — vezi [LICENSE](LICENSE)
+Distribuit sub licența MIT. Vezi [LICENSE](LICENSE) pentru detalii.
