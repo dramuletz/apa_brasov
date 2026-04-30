@@ -143,7 +143,7 @@ Câmp numeric pentru trimiterea autocitiri direct din Home Assistant.
 
 > **Atribute disponibile** pe `sensor.apa_brasov_ultima_factura`:
 > - `cod` — codul intern al facturii
-> - `serie_nr` — seria și numărul (ex: CAB26 187817)
+> - `serie_nr` — seria și numărul (ex: CAB99 123456)
 > - `data_emitere` — data emiterii
 > - `data_scadenta` — data scadenței
 > - `tva` — valoarea TVA
