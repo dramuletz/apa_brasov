@@ -1,4 +1,4 @@
-# 💧 APA Brasov — Home Assistant Integration
+#  APA Brasov — Home Assistant Integration 💧
 
 <div align="center">
 
@@ -8,9 +8,9 @@
 Integrare custom pentru portalul **[www.apabrasov.ro](https://www.apabrasov.ro)** care aduce datele contului tău de la furnizorul de apă direct în Home Assistant.
   
 [![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge&logo=homeassistantcommunitystore)](https://github.com/hacs/integration)
-[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2025+-41BDF5?style=for-the-badge&logo=homeassistant)](https://www.home-assistant.io/)
 [![GitHub release](https://img.shields.io/github/v/release/dramuletz/apa_brasov?style=for-the-badge&logo=github)](https://github.com/dramuletz/apa_brasov/releases)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg?style=for-the-badge)](LICENSE)
+[![Home Assistant](https://img.shields.io/badge/Home%20Assistant-2025+-41BDF5?style=for-the-badge&logo=homeassistant)](https://www.home-assistant.io/)
 
 
 </div>
