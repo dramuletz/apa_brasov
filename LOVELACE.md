@@ -165,14 +165,14 @@ Grafic bar cu istoricul tuturor plăților efectuate, afișate cronologic.
 Afișează codul de client ca state și toate detaliile contractului ca atribute.
 
 > **Atribute disponibile** pe `sensor.apa_brasov_date_utilizator`:
-> - `cod_client` — ex: P561/238
-> - `nr_contract` — ex: C5557
-> - `data_contract` — ex: 17.09.2018
+> - `cod_client` — ex: P123/123
+> - `nr_contract` — ex: x1234
+> - `data_contract` — ex: 01.01.1999
 > - `valabilitate` — ex: nedeterminat
-> - `tip_serviciu` — ex: Apa rece contorizata HARMAN POPULATIE
+> - `tip_serviciu` — ex: Apa rece contorizata 
 > - `in_reziliere` — Da / Nu
 > - `adresa` — adresa completă
-> - `cod_autocitire` — codul apometrului (ex: 133668)
+> - `cod_autocitire` — codul apometrului (ex: 123456)
 
 ---
 
@@ -219,4 +219,3 @@ automation:
 
 ---
 
-*Documentație generată pentru integrarea [APA Brasov](https://github.com/dramuletz/apa_brasov) de [@dramuletz](https://github.com/dramuletz)*
