@@ -10,6 +10,7 @@ from homeassistant.components.sensor import (
     SensorEntityDescription,
     SensorStateClass,
 )
+from datetime import datetime, timezone
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.core import HomeAssistant
 from homeassistant.helpers.entity import DeviceInfo
@@ -23,6 +24,19 @@ from .const import DOMAIN
 class ApaBrasovSensorDescription(SensorEntityDescription):
     value_fn: Callable[[dict], Any] = field(default=lambda d: None)
     attr_fn: Callable[[dict], dict] = field(default=lambda d: {})
+
+
+def _parse_dt(value):
+    """Converts ISO datetime string to timezone-aware datetime for HA timestamp sensors."""
+    if not value:
+        return None
+    try:
+        dt = datetime.fromisoformat(value)
+        if dt.tzinfo is None:
+            dt = dt.replace(tzinfo=timezone.utc)
+        return dt
+    except (ValueError, TypeError):
+        return None
 
 
 SENZORI: tuple[ApaBrasovSensorDescription, ...] = (
@@ -121,7 +135,7 @@ SENZORI: tuple[ApaBrasovSensorDescription, ...] = (
         name="Ultima Actualizare",
         icon="mdi:clock-check-outline",
         device_class=SensorDeviceClass.TIMESTAMP,
-        value_fn=lambda d: d.get("last_update"),
+        value_fn=lambda d: _parse_dt(d.get("last_update")),
     ),
 )
 
