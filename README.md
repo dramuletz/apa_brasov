@@ -66,7 +66,7 @@ Graficele folosesc [ApexCharts Card](https://github.com/RomRider/apexcharts-card
 
 ## ⚙️ Configurare
 
-Autentificarea se face cu **email** și **parolă** de pe [myaccount.apabrasov.ro](https://myaccount.apabrasov.ro). Nu sunt necesare alte date.
+Autentificarea se face cu **email** și **parolă** de pe [www.apabrasov.ro - My Account](https://www.apabrasov.ro). Nu sunt necesare alte date.
 
 Datele se actualizează **la fiecare 6 ore**.
 
