@@ -11,7 +11,7 @@ from .const import DOMAIN
 
 STEP_USER_DATA_SCHEMA = vol.Schema(
     {
-        vol.Required("username"): str,
+        vol.Required("email"): str,
         vol.Required("password"): str,
     }
 )
@@ -19,9 +19,9 @@ STEP_USER_DATA_SCHEMA = vol.Schema(
 
 async def validate_credentials(hass: HomeAssistant, data: dict) -> dict:
     """Valideaza credentialele."""
-    api = ApaBrasovAPI(username=data["username"], password=data["password"])
+    api = ApaBrasovAPI(username=data["email"], password=data["password"])
     await hass.async_add_executor_job(api.login)
-    return {"title": f"APA Brasov - {data['username']}"}
+    return {"title": f"APA Brasov - {data['email']}"}
 
 
 class ApaBrasovConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):

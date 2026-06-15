@@ -21,7 +21,7 @@ PLATFORMS: list[Platform] = [Platform.SENSOR, Platform.NUMBER]
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Configurare integrare APA Brasov."""
     api = ApaBrasovAPI(
-        username=entry.data["username"],
+        username=entry.data["email"],
         password=entry.data["password"],
     )
 
