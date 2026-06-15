@@ -6,9 +6,8 @@
         "title": "Conectare la myaccount.apabrasov.ro",
         "description": "Introduceți credențialele de pe portalul {portal_url}",
         "data": {
-          "username": "Email / Username",
-          "password": "Parolă",
-          "cod_client": "Cod Client (opțional)"
+          "email": "E-mail",
+          "password": "Parolă"
         }
       }
     },
